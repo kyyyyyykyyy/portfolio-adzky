@@ -1,0 +1,101 @@
+/* ... kode CSS sebelumnya ... */
+
+/* =========================== */
+/* 🔥 CSS UNTUK FLIP CARD 3D 🔥 */
+/* =========================== */
+.flip-card {
+  background-color: transparent;
+  width: 320px; /* Samakan dengan kartu di Hero */
+  height: 450px; /* Tinggi disesuaikan */
+  perspective: 1000px; /* Memberi efek kedalaman 3D */
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s; /* Durasi putaran */
+  transform-style: preserve-3d; /* Menjaga elemen anak tetap 3D */
+}
+
+/* Class ini akan ditambahkan oleh React saat di-flip */
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Sembunyikan sisi belakang saat diputar */
+  backface-visibility: hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border: 1px solid rgba(168, 85, 247, 0.3); /* Border Ungu Neon */
+}
+
+/* Gaya Sisi Depan (Foto) */
+.flip-card-front {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+}
+
+/* Gaya Sisi Belakang (Skill) */
+.flip-card-back {
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  transform: rotateY(180deg); /* Sisi belakang diputar duluan */
+}
+
+/* ========================================= */
+/* 🔥 ANIMATED NEON BORDER (BINGKAI SULTAN) 🔥 */
+/* ========================================= */
+
+.neon-card {
+  position: relative;
+  overflow: hidden; /* Biar cahaya gak bocor */
+  z-index: 1; /* Pastikan konten di atas */
+  /* Hapus border biasa biar diganti cahaya */
+  border: none !important; 
+}
+
+/* Lapisan Cahaya Berputar */
+.neon-card::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%; /* Lebih lebar dari kartu biar pas muter sudutnya kena */
+  height: 200%;
+  background: conic-gradient(
+    transparent, 
+    #00f2ea, 
+    transparent 30%, 
+    #ff0055, 
+    transparent 60%
+  );
+  transform: translate(-50%, -50%);
+  animation: rotateBorder 4s linear infinite;
+  z-index: -2;
+}
+
+/* Lapisan Background Gelap di Tengah (Biar teks kebaca) */
+.neon-card::after {
+  content: '';
+  position: absolute;
+  inset: 3px; /* Ketebalan Bingkai (3px) */
+  background: rgba(20, 20, 20, 0.9); /* Background kartu */
+  border-radius: 18px; /* Sesuaikan radius */
+  z-index: -1;
+}
+
+@keyframes rotateBorder {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
