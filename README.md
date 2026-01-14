@@ -93,4 +93,4 @@ Instagram: @mhmmdadzkyy
 Kalau Boss belum pernah install library-library canggih yang tadi kita buat di terminal, **WAJIB** jalankan perintah ini dulu di terminal VS Code Boss sekarang biar nggak error pas dijalankan orang lain:
 
 ```bash
-npm install framer-motion react-type-animation react-icons react-parallax-tilt canvas-confetti react-tsparticles tsparticles-slim
+npm install framer-motion react-type-animation react-icons react-parallax-tilt canvas-confetti react-tsparticles tsparticles-slim    
